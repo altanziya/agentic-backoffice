@@ -1,0 +1,10 @@
+{
+  "id": "in-006",
+  "received": "2026-10-03T13:20:00",
+  "channel": "email",
+  "from_name": "Nils Carstens",
+  "from_email": "nils.carstens@buildledger.example",
+  "company": "BuildLedger",
+  "subject": "Integration partnership: BuildLedger x Fieldline",
+  "body": "Hi team, I lead partnerships at BuildLedger, an invoicing tool for trade businesses with about 900 customers in DACH. Many of them ask for a Fieldline integration. Would you be open to a call about a joint integration and a referral fee of 15 percent for the first year? Best, Nils"
+}

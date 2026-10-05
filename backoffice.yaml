@@ -1,0 +1,172 @@
+# agentic-backoffice - system configuration.
+# Business context (who we are, voice, goals, competitors) lives in company/. This file
+# decides what runs when, with which limits, and what needs a human.
+
+name: fieldline-backoffice
+timezone: Europe/Berlin
+language: English        # output language of reports and messages
+company_file: company/company.yaml
+
+defaults:
+  model: sonnet          # aliases follow the current model of each tier
+  effort: medium
+  max_turns: 30
+  max_budget_usd: 1.00   # per run, enforced by the Agent SDK (includes subagents)
+  timeout_minutes: 20
+  retries: 1             # only for failures; a successful run is never repeated
+
+budgets:                 # enforced by the runner before a session starts
+  daily_usd: 12
+  monthly_usd: 150
+
+approvals:
+  channel: cli           # cli | telegram
+  expire_hours: 48       # no decision = rejected (fail closed)
+
+notify:
+  channel: stdout        # stdout | telegram
+
+telemetry:
+  otlp_endpoint: null    # e.g. http://localhost:4318 for Langfuse / Grafana / any OTLP backend
+
+# Rule of Two: which tools give which leg of the lethal trifecta.
+# `backoffice validate` fails if any agent (incl. what its delegates read) holds all three.
+capabilities:
+  untrusted_input:
+    - WebFetch
+    - WebSearch
+    - mcp__backoffice__inbound_list
+  private_data:
+    - mcp__backoffice__crm_*
+    - mcp__backoffice__metrics_*
+    - mcp__backoffice__ops_status
+  no_leg:                  # reviewed: these tools hold none of the three legs
+    - mcp__backoffice__propose_action   # proposes only; the tier + a human decide the effect
+    - mcp__backoffice__list_actions
+  external_effect:
+    - Bash
+    - "mcp__*__send*"
+    - "mcp__*__post*"
+    - "mcp__*__publish*"
+    - "mcp__*__delete*"
+
+# Side effects agents may *propose* via propose_action. The tier decides what happens.
+actions:
+  report.publish:
+    tier: T1
+    handler: file.write
+    description: Share a finished report in the team folder (workspace/published).
+    params: { root: workspace/published }
+  task.create:
+    tier: T1
+    handler: file.write
+    description: Add a task to the team backlog (workspace/tasks). payload {path, content}.
+    params: { root: workspace/tasks }
+  site.pull_request:
+    tier: T2
+    handler: github.pull_request
+    description: Change the website via a branch + PR. payload {branch, title, body, files}.
+    params: { repo: workspace/site, base: main, branch_prefix: "agent/", push: false }
+  crm.update:
+    tier: T2
+    handler: crm.update
+    description: Change CRM fields or log an activity. payload {table, id, fields} / {activity}.
+  team.message:
+    tier: T2
+    handler: notify.telegram
+    description: Send a message to the team chat. payload {text}.
+  slack.post:
+    tier: T2
+    handler: webhook.post
+    description: Post to the team Slack channel via incoming webhook. payload {json}.
+    params: { url_env: SLACK_WEBHOOK_URL }
+  payment.send:
+    tier: T3
+    handler: refuse
+    description: Money movement. Never automated.
+  contract.sign:
+    tier: T3
+    handler: refuse
+    description: Legal commitments. Never automated.
+  data.delete:
+    tier: T3
+    handler: refuse
+    description: Deleting customer or company data. Never automated.
+
+jobs:
+  news-digest:
+    agent: market-intel
+    description: Morning scan of industry news against our keywords.
+    schedule: "7 6 * * 1-5"
+    prompt: Run the news-digest skill for {date}.
+    effort: low
+    max_budget_usd: 0.60
+
+  daily-briefing:
+    agent: chief-of-staff
+    description: One-page morning briefing - metrics, pipeline, approvals, news, ops.
+    schedule: "30 7 * * 1-5"
+    prompt: Run the daily-briefing skill for {date}.
+    notify: always
+    requires: ["file:workspace/reports/intel?"]
+
+  ops-check:
+    agent: ops-sentinel
+    description: Reads the ledger, flags failing jobs, cost spikes, stuck approvals.
+    schedule: "45 7 * * *"
+    prompt: Run the ops-check skill for {date}.
+    effort: low
+    max_budget_usd: 0.30
+
+  crm-hygiene:
+    agent: crm-steward
+    description: Triage inbound, flag stale deals, propose CRM fixes.
+    schedule: "0 8 * * 1-5"
+    prompt: Run the crm-hygiene skill for {date}.
+
+  kpi-weekly:
+    agent: kpi-analyst
+    description: Weekly KPI report with week-over-week deltas, every number sourced.
+    schedule: "0 7 * * 1"
+    prompt: Run the kpi-report skill for the week ending {date}.
+    effort: high
+
+  seo-weekly:
+    agent: seo-analyst
+    description: Search performance, quick wins (positions 4-15), content gaps.
+    schedule: "15 7 * * 1"
+    prompt: Run the seo-weekly skill for {date}.
+    effort: high
+
+  content-planning:
+    agent: content-writer
+    description: Draft the next post from the content plan, review it, propose a PR.
+    schedule: "0 9 * * 2,4"
+    prompt: Run the content-pipeline skill for {date}.
+    effort: high
+    max_budget_usd: 2.00
+    monthly_budget_usd: 25
+
+  site-audit:
+    agent: web-maintainer
+    description: Weekly check of the website source for broken links, missing meta, stale facts.
+    schedule: "0 10 * * 3"
+    prompt: Run the site-audit skill for {date}.
+
+  competitor-brief:
+    agent: market-intel
+    description: Twice-monthly brief on what competitors shipped, priced and said.
+    schedule: "0 9 1,15 * *"
+    prompt: Run the competitor-brief skill for {date}.
+    effort: high
+    max_budget_usd: 1.50
+
+  weekly-review:
+    agent: chief-of-staff
+    description: Friday review - fans out to specialists in parallel, then synthesises.
+    schedule: "0 18 * * 5"
+    prompt: Run the weekly-review skill for the week ending {date}.
+    effort: high
+    max_turns: 40
+    max_budget_usd: 2.50
+    notify: always

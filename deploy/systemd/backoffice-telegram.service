@@ -1,0 +1,43 @@
+# Long-running Telegram approval service (`backoffice telegram`). Only needed when
+# approvals.channel is `telegram` in backoffice.yaml. It never starts agents: it sends
+# approval buttons for pending actions, records the decision in the ledger and runs the
+# executor for approved actions.
+[Unit]
+Description=agentic-backoffice Telegram approvals
+Documentation=file:///opt/backoffice/docs/operations.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=backoffice
+Group=backoffice
+WorkingDirectory=/opt/backoffice
+# Needs TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID, TELEGRAM_APPROVER_IDS (and any handler secrets).
+EnvironmentFile=/etc/backoffice.env
+Environment=BACKOFFICE_ROOT=/opt/backoffice
+Environment=HOME=/var/lib/backoffice
+ExecStart=/opt/backoffice/.venv/bin/backoffice telegram
+Restart=always
+RestartSec=5
+# Stop restarting only if it fails 10 times within a minute (for example a bad token).
+StartLimitIntervalSec=60
+StartLimitBurst=10
+
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/opt/backoffice /var/lib/backoffice
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+
+[Install]
+WantedBy=multi-user.target

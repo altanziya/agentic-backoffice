@@ -1,0 +1,10 @@
+{
+  "id": "in-004",
+  "received": "2026-10-02T16:30:00",
+  "channel": "email",
+  "from_name": "Silke Maurer",
+  "from_email": "silke.maurer@maurer-elektro.example",
+  "company": "Maurer Elektrotechnik",
+  "subject": "Recurring jobs show wrong date after daylight saving",
+  "body": "Hi Lena, our yearly inspection jobs are shifted by one hour since the clock change last weekend. The calendar view shows 08:00 but the technician app says 07:00. Is that a known issue? It affects about 15 jobs. Thanks, Silke"
+}

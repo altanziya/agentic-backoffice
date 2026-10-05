@@ -1,0 +1,43 @@
+# Runs `backoffice tick` once: starts every job whose schedule slot is due, then exits.
+# Triggered by backoffice-tick.timer. Install to /etc/systemd/system/.
+#
+# Assumptions: repo checked out at /opt/backoffice with a virtualenv in .venv, a system user
+# `backoffice` whose home is /var/lib/backoffice, secrets in /etc/backoffice.env.
+[Unit]
+Description=agentic-backoffice scheduler tick
+Documentation=file:///opt/backoffice/docs/operations.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=backoffice
+Group=backoffice
+WorkingDirectory=/opt/backoffice
+# Read by systemd as root before privileges are dropped; keep it 0600 root:root.
+EnvironmentFile=/etc/backoffice.env
+Environment=BACKOFFICE_ROOT=/opt/backoffice
+# The bundled Claude Code CLI keeps its own state under $HOME.
+Environment=HOME=/var/lib/backoffice
+ExecStart=/opt/backoffice/.venv/bin/backoffice tick
+# A tick runs due jobs one after another; job timeouts (backoffice.yaml) apply to each.
+# systemd's default for oneshot units is no timeout, so set a ceiling explicitly.
+TimeoutStartSec=2h
+
+# Hardening. Tighten further after testing on your host.
+NoNewPrivileges=true
+ProtectSystem=strict
+# The repo (workspace/, .backoffice/, workspace/site for pull requests) and the home dir.
+ReadWritePaths=/opt/backoffice /var/lib/backoffice
+ProtectHome=true
+PrivateTmp=true
+PrivateDevices=true
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+RestrictNamespaces=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+CapabilityBoundingSet=
+# MemoryDenyWriteExecute is deliberately not set: JIT-compiled runtimes can break under it.

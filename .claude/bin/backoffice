@@ -1,0 +1,18 @@
+#!/bin/sh
+# Resolves the agentic-backoffice CLI for Claude Code hooks and the MCP server.
+
+# Headless runs enforce the stricter per-agent policy in-process (SDK hooks); the command
+# hook would only duplicate it. Decide this first, before looking for the binary.
+if [ "$1" = "hook" ] && [ -n "$BACKOFFICE_RUN_ID" ]; then
+  exit 0
+fi
+
+# Fails closed: if the guard cannot run, the tool call is blocked (exit 2), not waved through.
+root="${CLAUDE_PROJECT_DIR:-$(pwd)}"
+bin="$root/.venv/bin/backoffice"
+[ -x "$bin" ] || bin="$(command -v backoffice 2>/dev/null)"
+if [ -z "$bin" ]; then
+  echo "agentic-backoffice is not installed - run 'make setup' in $root" >&2
+  exit 2
+fi
+exec "$bin" "$@"

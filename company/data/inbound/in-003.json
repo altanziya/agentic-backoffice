@@ -1,0 +1,10 @@
+{
+  "id": "in-003",
+  "received": "2026-10-02T11:05:00",
+  "channel": "contact_form",
+  "from_name": "Aylin Demir",
+  "from_email": "aylin@demir-elektrotechnik.example",
+  "company": "Demir Elektrotechnik",
+  "subject": "Question about pricing for 18 technicians",
+  "body": "Good morning, we are an electrical contractor with 18 technicians in Vienna and Graz. Your Team plan stops at 15. What would we pay? Do you also support Austrian VAT on exports? Aylin Demir"
+}

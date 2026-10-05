@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "backoffice": {
+      "command": ".claude/bin/backoffice",
+      "args": ["mcp"]
+    }
+  }
+}

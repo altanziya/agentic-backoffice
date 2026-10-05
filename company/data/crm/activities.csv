@@ -1,0 +1,41 @@
+contact_id,ts,kind,summary
+c001,2026-09-29T10:15:00,call,"Quarterly check-in: happy, asked for a vacation planner view."
+c001,2026-08-25T14:15:00,email,Sent release notes for recurring jobs.
+c003,2026-10-02T09:15:00,email,Referral: introduced Zimmer Heizungsbau.
+c003,2026-09-06T11:15:00,meeting,Onboarding of two new technicians.
+c004,2026-09-10T15:15:00,call,"Business plan review, SSO working."
+c005,2026-08-26T16:15:00,email,"Usage drop noticed, asked if all is well. No reply."
+c005,2026-09-23T09:15:00,note,Still no logins in 3 weeks; consider call.
+c007,2026-09-17T10:15:00,email,Swiss VAT invoice question answered.
+c008,2026-09-04T13:15:00,call,Seasonal slow-down; may pause in winter.
+c009,2026-09-23T14:15:00,meeting,"Demo held, needs maintenance contracts."
+c009,2026-09-04T10:15:00,call,"Discovery call, 12 technicians."
+c009,2026-08-17T11:15:00,email,Inbound request after trade fair.
+c010,2026-09-27T15:15:00,email,Sent proposal for Business plan.
+c010,2026-09-13T11:15:00,meeting,Demo with operations team.
+c010,2026-08-28T09:15:00,call,Discovery call.
+c011,2026-09-30T10:15:00,call,"Price discussion, asked for annual billing."
+c011,2026-09-18T14:15:00,meeting,Second demo with finance.
+c012,2026-09-16T09:15:00,call,"Qualification: six technicians, paper job sheets."
+c013,2026-09-13T12:15:00,email,Sent HVAC checklist follow-up.
+c014,2026-09-19T10:15:00,meeting,First demo with office manager.
+c014,2026-09-08T15:15:00,email,Intro mail after webinar.
+c015,2026-09-08T11:15:00,call,"Price-sensitive, wants discount."
+c016,2026-09-24T14:15:00,email,Sent proposal.
+c016,2026-09-11T10:15:00,meeting,"Demo, 14 technicians."
+c017,2026-09-15T16:15:00,email,Contract signed.
+c017,2026-09-07T10:15:00,meeting,Final demo.
+c018,2026-08-31T11:15:00,email,Lost: chose competitor on price.
+c019,2026-08-14T09:15:00,call,Not ready; revisit in spring.
+c020,2026-09-05T14:15:00,email,"Trade fair follow-up, no reply."
+c021,2026-09-21T13:15:00,call,Needs a homeowner portal.
+c022,2026-09-14T10:15:00,meeting,"Demo, compared with ServiceBee."
+c023,2026-10-01T09:15:00,note,"Contact form lead, referral from Kruse."
+c024,2026-09-25T11:15:00,call,"Discovery call, five vans."
+c025,2026-10-03T08:15:00,note,Newsletter signup created a second record (duplicate?).
+c002,2026-09-21T10:15:00,email,Answered API question.
+c006,2026-09-26T15:15:00,email,Help with SMS template.
+c015,2026-08-21T10:15:00,email,Intro mail.
+c012,2026-08-09T12:15:00,note,Found via search: dispatch software for plumbers.
+c021,2026-08-28T09:15:00,email,Intro mail.
+c022,2026-09-02T14:15:00,email,Intro mail after competitor comparison read.

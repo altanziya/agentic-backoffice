@@ -1,0 +1,12 @@
+# The demo site has a broken internal link, a page without a meta description, a duplicated
+# description and a stale price (EUR 279 on the site vs. EUR 299 in products.md).
+id: site-audit-planted-issues
+job: site-audit
+trials: 1
+checks:
+  - status: success
+  - max_denied: 0
+  - action_proposed: {kind: site.pull_request, min: 1}
+  - artifact:
+      glob: "workspace/reports/site/*.md"
+      contains: ["does-not-exist", "about", "299"]

@@ -1,0 +1,10 @@
+{
+  "id": "in-001",
+  "received": "2026-09-30T09:12:00",
+  "channel": "contact_form",
+  "from_name": "Heiko Lindner",
+  "from_email": "heiko.lindner@lindner-sanitaer.example",
+  "company": "Lindner Sanitär",
+  "subject": "Demo request - 7 technicians",
+  "body": "Hi, we are a plumbing company with 7 technicians near Stuttgart. We plan with a shared Excel file and it breaks every week. Could we get a demo next week? Mostly interested in customer SMS and recurring maintenance jobs. Thanks, Heiko"
+}

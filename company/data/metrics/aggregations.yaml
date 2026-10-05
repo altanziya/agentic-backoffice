@@ -1,0 +1,11 @@
+# How each column is aggregated over a reporting window (default: sum).
+#   last - end-of-day snapshots (summing them is meaningless)
+#   mean - rates and averages
+web:
+  bounce_rate: mean
+search:
+  avg_position: mean
+product:
+  active_accounts: last
+revenue:
+  mrr_eur: last

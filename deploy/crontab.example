@@ -1,0 +1,22 @@
+# Cron alternative to the systemd timer. Install as the `backoffice` user: crontab -u backoffice crontab.example
+#
+# One line is enough. Schedules live in backoffice.yaml and are evaluated in its `timezone`,
+# so the host's own timezone and CRON_TZ do not matter.
+#
+# - `. /etc/backoffice.env` loads secrets; the file must be readable by the backoffice user
+#   (for example mode 0640, owner root, group backoffice) and use plain KEY=value lines.
+# - `flock -n` keeps a slow tick from overlapping the next one (cron has no equivalent of a
+#   oneshot unit). The lock file lives in .backoffice/, which must exist (run any backoffice
+#   command once, or `mkdir -p /opt/backoffice/.backoffice`).
+# - Output goes to the system log; read it with `journalctl -t backoffice-tick` or syslog.
+#
+# Cron starts jobs with a minimal environment, so set the basics here.
+SHELL=/bin/sh
+PATH=/usr/local/bin:/usr/bin:/bin
+HOME=/var/lib/backoffice
+BACKOFFICE_ROOT=/opt/backoffice
+
+*/5 * * * * cd /opt/backoffice && set -a && . /etc/backoffice.env && set +a && flock -n /opt/backoffice/.backoffice/tick.lock /opt/backoffice/.venv/bin/backoffice tick 2>&1 | logger -t backoffice-tick
+
+# Telegram approvals need a long-running process; cron is a poor fit for that. Use the
+# systemd unit, or run `backoffice telegram` under your supervisor of choice.

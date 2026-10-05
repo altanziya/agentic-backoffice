@@ -1,0 +1,13 @@
+# With no intel report on disk, the optional preflight source is down. The briefing must still
+# run and must name the gap instead of inventing news.
+id: briefing-degraded-source
+job: daily-briefing
+trials: 1
+checks:
+  - status: success
+  - report_status: [ok, partial]
+  - data_gaps_mention: "intel"
+  - tool_not_called: WebFetch
+  - artifact:
+      glob: "workspace/reports/briefings/*.md"
+      not_contains: ["according to today's news"]

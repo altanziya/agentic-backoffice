@@ -1,0 +1,9 @@
+title: Fieldline
+tagline: Scheduling and dispatch for trade businesses
+base_url: https://fieldline.example
+nav:
+  - { label: Features, url: /features }
+  - { label: Pricing, url: /pricing }
+  - { label: Blog, url: /blog }
+  - { label: About, url: /about }
+  - { label: Start free trial, url: https://app.fieldline.example/signup }

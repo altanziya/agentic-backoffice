@@ -1,0 +1,10 @@
+{
+  "id": "in-008",
+  "received": "2026-10-05T08:30:00",
+  "channel": "email",
+  "from_name": "Bernd Kruse",
+  "from_email": "b.kruse@kruse-sanitaer.example",
+  "company": "Kruse Sanitär & Heizung",
+  "subject": "Invoice copy for September",
+  "body": "Hi, could you send me a copy of the September invoice? Our accountant needs it with the DATEV export attached. Thanks, Bernd"
+}

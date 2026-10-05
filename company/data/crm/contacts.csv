@@ -1,0 +1,26 @@
+id,name,email,company,role,stage,owner,last_touch,notes
+c001,Heinz Albrecht,heinz.albrecht@albrecht-heizung.example,Albrecht Heizung GmbH,Owner,customer,Lena,2026-09-29,"Team plan since March. Happy, 9 technicians."
+c002,Silke Maurer,silke.maurer@maurer-elektro.example,Maurer Elektrotechnik,Office manager,customer,Lena,2026-09-21,Starter plan. Asked about API once.
+c003,Bernd Kruse,b.kruse@kruse-sanitaer.example,Kruse Sanitär & Heizung,Owner,customer,Lena,2026-10-02,Team plan. Referral source for two leads.
+c004,Andrea Fink,andrea.fink@fink-klima.example,Fink Klimatechnik,Managing director,customer,Lena,2026-09-10,Business plan. Quarterly check-in due.
+c005,Dirk Hoffmann,dirk@hoffmann-solar.example,Hoffmann Solar & Wärmepumpen,Owner,customer,Lena,2026-08-26,Team plan. No login for 3 weeks.
+c006,Petra Seidel,petra.seidel@seidel-haustechnik.example,Seidel Haustechnik,Office manager,customer,Lena,2026-09-26,Starter plan.
+c007,Ralf Engel,ralf.engel@engel-elektro.example,Engel Elektro AG,Owner,customer,Lena,2026-09-17,Swiss customer (Zürich). Team plan.
+c008,Monika Pohl,monika.pohl@pohl-kaelte.example,Pohl Kältetechnik,Owner,customer,Lena,2026-09-04,Starter plan. Mentioned seasonal slow-down.
+c009,Markus Vogel,markus.vogel@vogel-haustechnik.example,Vogel Haustechnik GmbH,Owner,demo,Jonas,2026-09-23,Demo held. Needs maintenance contracts and 12 technicians.
+c010,Nadine Kraft,nadine.kraft@kraft-installation.example,Kraft Installation,Operations lead,proposal,Jonas,2026-09-27,"Wants Business plan, SSO question open."
+c011,Stefan Winter,stefan@winter-gebaeudetechnik.example,Winter Gebäudetechnik,Managing director,negotiation,Jonas,2026-09-30,Asking for annual billing discount.
+c012,Claudia Reuter,claudia.reuter@reuter-sanitaer.example,Reuter Sanitär,Owner,qualified,Jonas,2026-09-16,"Six technicians, uses paper job sheets."
+c013,Tim Baumann,tim.baumann@baumann-elektro.example,Baumann Elektro,Owner,lead,Jonas,2026-09-13,Downloaded the HVAC checklist.
+c014,Gerda Lutz,gerda.lutz@lutz-heizung.example,Lutz Heizung & Bad,Office manager,demo,Jonas,2026-09-19,Two demos with the owner joining. Needs DATEV export.
+c015,Oliver Brandl,oliver.brandl@brandl-technik.example,Brandl Technik (AT),Owner,qualified,Jonas,2026-09-08,"Salzburg, 8 technicians, price-sensitive."
+c016,Jana Schuster,jana.schuster@schuster-wp.example,Schuster Wärmepumpen,Managing director,proposal,Jonas,2026-09-24,"Heat pump installer, 14 technicians."
+c017,Frank Dietrich,frank.dietrich@dietrich-klima.example,Dietrich Klima & Lüftung,Owner,won,Jonas,2026-09-15,Signed Team plan; onboarding scheduled.
+c018,Heike Sommer,heike.sommer@sommer-elektro.example,Sommer Elektroanlagen,Owner,lost,Jonas,2026-08-31,Chose a competitor (price).
+c019,Uwe Lang,uwe.lang@lang-sanitaer.example,Lang Sanitär,Owner,lost,Jonas,2026-08-14,"Not ready, revisit in spring."
+c020,Birgit Neumann,birgit.neumann@neumann-haustechnik.example,Neumann Haustechnik,Office manager,lead,Jonas,2026-09-05,"Met at the trade fair, no reply since."
+c021,Kai Schreiber,kai.schreiber@schreiber-solar.example,Schreiber Solartechnik,Owner,qualified,Jonas,2026-09-21,Needs a customer portal for homeowners.
+c022,Annika Roth,annika.roth@roth-elektro.example,Roth Elektro Service,Operations lead,demo,Jonas,2026-09-14,"Compared with ServiceBee, wants route planning."
+c023,Michael Zimmer,michael.zimmer@zimmer-heizung.example,Zimmer Heizungsbau,Owner,lead,Jonas,2026-10-01,Contact form lead.
+c024,Katrin Brandt,katrin.brandt@brandt-elektro.example,Brandt Elektro,Managing director,qualified,Jonas,2026-09-25,Five vans. Interested in customer SMS.
+c025,Katrin Brandt,Katrin.Brandt@Brandt-Elektro.example,Brandt Elektro,Managing director,lead,Jonas,2026-10-03,Created from newsletter signup.

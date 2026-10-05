@@ -1,0 +1,123 @@
+# Fieldline demo company. Fork: replace this file and the other files in company/ with your own business.
+name: Fieldline
+one_liner: Scheduling and dispatch software that keeps small trade businesses' vans full and their customers informed.
+website: https://fieldline.example
+demo: true   # allows `backoffice demo reset`; remove this line in your fork
+location: Berlin, Germany
+stage: Seed (7 people, ~140 paying customers, MRR around EUR 38k)
+
+team:
+  - { name: Mara, role: CEO and co-founder, owns: strategy, fundraising, final say on pricing }
+  - { name: Tobias, role: CTO and co-founder, owns: product and infrastructure }
+  - { name: Jonas, role: Sales (founder-led pipeline), owns: CRM, demos, deals }
+  - { name: Lena, role: Customer success, owns: onboarding, support, churn }
+  - { name: Ines, role: Marketing, owns: website, content, SEO, brand voice }
+  - { name: Paul, role: Software engineer, owns: mobile app and integrations }
+  - { name: Sofia, role: Operations and finance, owns: invoicing, contracts, tooling }
+
+icp:
+  summary: >
+    Owner-run trade businesses with 3 to 25 technicians in Germany, Austria and Switzerland that
+    still dispatch with phone calls, WhatsApp groups and spreadsheets.
+  trades: [HVAC, electrical, plumbing and sanitary, heat pumps and solar installation]
+  size: 3-25 technicians, EUR 400k-5M annual revenue
+  buyer: Owner or office manager (the person who plans the week every Friday)
+  pains:
+    - Double-booked technicians and missed appointments
+    - Customers calling to ask "when is the technician arriving?"
+    - Job paperwork typed in twice (van to office to invoice)
+  disqualifiers: [Enterprise facility management, solo tradespeople under 3 technicians, outside DACH]
+
+products: see products.md
+
+competitors:
+  - name: ServiceBee
+    domain: servicebee.example
+    positioning: Broad field-service suite with quoting and invoicing; heavy onboarding, priced per user.
+  - name: TradeFlow
+    domain: tradeflow.example
+    positioning: Low-priced job tracker for solo tradespeople; thin dispatch and no DACH compliance.
+  - name: FieldKit
+    domain: fieldkit.example
+    positioning: Mobile-first checklists and forms for technicians; weak planning and routing.
+
+news_keywords:
+  high: [Handwerk Software, field service software, Fachkräftemangel Handwerk, Wärmepumpe Förderung, E-Rechnung Pflicht, ServiceBee, TradeFlow, FieldKit]
+  medium: [Handwerkerbetriebe Digitalisierung, Disposition Software, Einsatzplanung, GoBD, ZUGFeRD, trade business scheduling, dispatch software funding]
+  low: [Handwerkskammer, SHK Branche, Elektrohandwerk, Smart Home Installation, Baukonjunktur]
+
+# Metrics sources are CSV files in company/data/metrics/ (see mcp__backoffice__metrics_*).
+# metrics_query aggregates each column per company/data/metrics/aggregations.yaml: flows are
+# summed, snapshots (MRR, active accounts) take the last value, rates are averaged. The
+# `aggregation` field in every summary says which one was used.
+kpis:
+  sessions:
+    definition: Website sessions (all traffic) per day.
+    source: web
+    column: sessions
+  signups_trial:
+    definition: Started 14-day free trials per day. Leading indicator of new_paid (about 3 weeks lag).
+    source: web
+    column: signups_trial
+  trial_conversion_rate:
+    definition: signups_trial / sessions. Derived; the normal level is about 2.0 to 2.4 percent.
+    source: web
+    column: signups_trial / sessions
+  bounce_rate:
+    definition: Share of single-page sessions (0 to 1). Rate; metrics_query averages it.
+    source: web
+    column: bounce_rate
+  search_clicks:
+    definition: Organic clicks from Google Search Console per day.
+    source: search
+    column: clicks
+  search_impressions:
+    definition: Organic impressions per day.
+    source: search
+    column: impressions
+  avg_position:
+    definition: Average ranking position (lower is better). Rate; metrics_query averages it.
+    source: search
+    column: avg_position
+  search_queries:
+    definition: >
+      Query-level detail is NOT in the metrics adapter. Read company/data/search/queries.csv with
+      the Read tool. Columns: query, page, clicks_28d, impressions_28d, position, position_prev.
+      Quick win = position 4 to 15 with high impressions.
+    source: file company/data/search/queries.csv
+  active_accounts:
+    definition: Paying accounts at end of day. Snapshot; metrics_query reports the last value.
+    source: product
+    column: active_accounts
+  jobs_scheduled:
+    definition: Jobs scheduled by customers in the app per day (product usage).
+    source: product
+    column: jobs_scheduled
+  new_paid:
+    definition: Trials converted to paying accounts per day.
+    source: product
+    column: new_paid
+  churned:
+    definition: Accounts that cancelled per day.
+    source: product
+    column: churned
+  mrr_eur:
+    definition: Monthly recurring revenue in EUR at end of day. Snapshot; metrics_query reports the last value.
+    source: revenue
+    column: mrr_eur
+  new_mrr_eur:
+    definition: MRR added by new paid accounts per day (EUR).
+    source: revenue
+    column: new_mrr_eur
+  churned_mrr_eur:
+    definition: MRR lost to churn per day (EUR).
+    source: revenue
+    column: churned_mrr_eur
+
+approvals:
+  # Who decides what (roles; the approval channel is configured in backoffice.yaml).
+  website_and_content: Ines (Marketing)
+  crm_changes_and_sales_messages: Jonas (Sales)
+  customer_facing_support: Lena (Customer success)
+  pricing_legal_money: Mara (CEO) - agents never execute these
+  tooling_and_infra: Tobias (CTO)

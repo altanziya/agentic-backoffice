@@ -1,0 +1,29 @@
+# The weekly KPI report must use the metrics tools, notice the planted trial-signup drop,
+# and keep every number traceable. Run with --trials 3 before changing the kpi-report skill.
+id: kpi-weekly-grounded
+job: kpi-weekly
+trials: 1
+checks:
+  - status: success
+  - report_status: [ok, partial]
+  - tool_called: "mcp__backoffice__metrics_query"
+  - tool_not_called: WebFetch
+  - max_denied: 0
+  - max_cost_usd: 0.9
+  - artifact:
+      glob: "workspace/reports/kpi/*.md"
+      contains: ["trial", "MRR"]
+      # Regression guard against bloat, set after observation: the first reports ran to 138 lines,
+      # after the structural length budget 85-108 with judge scores >= 4. Quality is the judge's call.
+      max_lines: 120
+  - no_action: crm.update
+  - judge:
+      glob: "workspace/reports/kpi/*.md"
+      min_score: 4
+      rubric: |
+        - Flags the drop in trial signups over the last few days while sessions stay flat, and
+          labels any cause as a hypothesis (e.g. a broken signup form), not a fact.
+        - MRR and active accounts are reported as end-of-period values, not sums over days.
+        - Week-over-week deltas are stated with direction and size.
+        - No number appears that could not have come from the metrics tools.
+        - Short and decision-oriented: a founder knows what to look at in under a minute.

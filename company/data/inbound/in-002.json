@@ -1,0 +1,10 @@
+{
+  "id": "in-002",
+  "received": "2026-10-01T14:40:00",
+  "channel": "email",
+  "from_name": "Markus Vogel",
+  "from_email": "markus.vogel@vogel-haustechnik.example",
+  "company": "Vogel Haustechnik GmbH",
+  "subject": "Re: maintenance contracts demo",
+  "body": "Hello Jonas, thanks for the demo two weeks ago. We talked internally and want to start with the Team plan for 12 technicians. Can you send the final offer and tell me how the extra technicians are billed? We would like to start on the 1st of next month. Regards, Markus"
+}

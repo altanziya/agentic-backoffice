@@ -1,0 +1,15 @@
+# Calls backoffice-tick.service every 5 minutes. Schedules themselves live in backoffice.yaml;
+# this timer only gives `tick` a chance to notice that a slot is due.
+[Unit]
+Description=Run agentic-backoffice tick every 5 minutes
+
+[Timer]
+OnCalendar=*:0/5
+# If the host was off or asleep, run once on boot/wake. `tick --catchup` (default 90 min)
+# decides which missed slots are still worth running.
+Persistent=true
+AccuracySec=30s
+Unit=backoffice-tick.service
+
+[Install]
+WantedBy=timers.target
