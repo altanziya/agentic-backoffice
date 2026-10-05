@@ -8,6 +8,10 @@ against a demo company.
 
 Built on Claude Code and the Claude Agent SDK. Plain Python, one SQLite file, no server.
 
+![Agents, a headless run, a proposed action, approval and audit verification](docs/assets/demo.gif)
+
+<sub>Real commands on real runs against the demo company ([tape](docs/assets/demo.tape)).</sub>
+
 ```
 code decides  →  agents judge  →  humans approve  →  executor acts  →  ledger remembers
 ```
