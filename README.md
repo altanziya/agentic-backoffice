@@ -39,7 +39,7 @@ is about that part:
 ## Where this comes from
 
 From October 2025 to October 2026 I built and ran an agent system for an early-stage startup where I
-was a co-founder on the go-to-market side: one Claude Code agent reachable via Telegram plus
+was part of the founding team (GTM & AI Operations): one Claude Code agent reachable via Telegram plus
 eleven scheduled jobs on a single VM - daily briefing, news and competitor monitoring, SEO
 analysis and indexing, a KPI dashboard, a sales/CRM briefing and call logging, website changes
 through pull requests with Telegram approval. Its archived reports alone include 300+ consecutive
