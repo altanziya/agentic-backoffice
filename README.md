@@ -34,11 +34,12 @@ is about that part:
 
 ## Where this comes from
 
-From March to August 2026 I built and ran an agent system for an early-stage startup where I
+From October 2025 to October 2026 I built and ran an agent system for an early-stage startup where I
 was a co-founder on the go-to-market side: one Claude Code agent reachable via Telegram plus
 eleven scheduled jobs on a single VM - daily briefing, news and competitor monitoring, SEO
 analysis and indexing, a KPI dashboard, a sales/CRM briefing and call logging, website changes
-through pull requests with Telegram approval. It produced 150 consecutive daily briefings.
+through pull requests with Telegram approval. Its archived reports alone include 150 consecutive
+daily briefings (March to August 2026).
 
 It also had every first-system problem: each call ran with `--dangerously-skip-permissions`,
 most guardrails were prompt text, there were no evals and no cost tracking, and a one-day audit
