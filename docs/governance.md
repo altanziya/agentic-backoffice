@@ -29,7 +29,7 @@ The EU AI Act (Regulation (EU) 2024/1689) sorts AI systems by risk. For internal
 
 **Dates.** Application dates for several provisions, in particular the high-risk obligations, were amended by the 2026 "digital omnibus" package. This page does not state those dates. Read the current consolidated text of the Regulation and the amending act before you plan around any date.
 
-**Checking quotes.** If you want to verify what an article actually says, or compare a version of the text, the author's companion project [`eu-ai-act-mcp`](https://github.com/akoemek-dev/eu-ai-act-mcp) lets an agent look up quotes from versioned text of the Act. Use it, or the official text on EUR-Lex, instead of trusting a summary like this one.
+**Checking quotes.** If you want to verify what an article actually says, or compare a version of the text, the author's companion project [`eu-ai-act-mcp`](https://github.com/altanziya/eu-ai-act-mcp) lets an agent look up quotes from versioned text of the Act. Use it, or the official text on EUR-Lex, instead of trusting a summary like this one.
 
 ## Mapping: controls and related AI Act concepts
 
