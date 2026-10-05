@@ -8,14 +8,14 @@ Everything below about the predecessor comes from a post-hoc review of its repos
 
 | | |
 |---|---|
-| Period | October 2025 to October 2026; its repository covers March to August 2026 |
+| Period | October 2025 to October 2026 |
 | Shape | One generalist Claude Code agent behind a Telegram long-polling listener, plus 11 scheduled jobs (7 LLM prompts, 4 plain scripts) on a single VM |
 | Scheduling | A crontab on the VM, with the intended schedule also described in a JSON registry in the repo |
 | Evidence it ran | 300+ consecutive daily briefings in the archived reports, one per calendar day, no gaps |
 | Evidence it was useful | None recorded. The reports prove it ran, not that anyone acted on them |
 | Not present | Tool allowlists, enforced approvals, tests, evals, per-run cost or trace data, budgets |
 
-For roughly ten weeks the VM, not the repo, held the real code ("resilience changes since March, uncommitted on the VM", in the words of one commit). A review in July 2026 brought the repo back in sync and hardened it in four phases. What that review found is the most useful part.
+For roughly ten weeks the VM, not the repo, held the real code: resilience changes were made on the machine and not committed. A review in July 2026 brought the repo back in sync and hardened it in four phases. What that review found is the most useful part.
 
 ## Meta-lessons
 
